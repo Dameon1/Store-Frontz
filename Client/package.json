@@ -1,8 +1,10 @@
 {
-  "name": "Store-Frontz-Client",
+  "name": "client",
   "version": "1.0.0",
-  "description": "Store-Frontz! User friendly marketplace using React, GraphQL, Next and Apollo",
+  "description": "",
   "main": "index.js",
+  "author": "Dameon Mendoza",
+  "license": "ISC",
   "scripts": {
     "dev": "next -p 7777",
     "build": "next build",
@@ -11,8 +13,6 @@
     "heroku-postbuild": "next build",
     "preinstall": "npx npm-force-resolutions"
   },
-  "author": "Dameon Mendoza",
-  "license": "ISC",
   "dependencies": {
     "@apollo/client": "^3.3.6",
     "@apollo/link-error": "^2.0.0-beta.3",
@@ -69,6 +69,7 @@
       "./jest.setup.js"
     ]
   },
+  "//": "This is our babel config, I prefer this over a .babelrc file",
   "babel": {
     "env": {
       "development": {

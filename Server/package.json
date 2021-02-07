@@ -66,3 +66,11 @@
     "node": ">=10.0.0"
   }
 }
+"eslintConfig": {
+  "extends": [
+    "wesbos"
+  ],
+  "rules": {
+    "react/jsx-props-no-spreading": 0
+  }
+},
