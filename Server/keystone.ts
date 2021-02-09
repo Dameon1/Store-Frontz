@@ -1,33 +1,56 @@
-import { config, createSchema } from '@keystone-next/keystone/schema';
-import 'dotenv/config';
+import "dotenv/config";
 
+import { config, createSchema } from "@keystone-next/keystone/schema";
+import { createAuth } from "@keystone-next/auth";
+import { withItemData, statelessSessions } from '@keystone-next/keystone/session'
 
-const databaseURL = process.env.DATABASE_URL || 'mongodb://localhost/kestone-store-fronts-tutorial';
+import { User } from "./schemas/User";
 
-const sessionConfi = {
+const databaseURL =
+  process.env.DATABASE_URL ||
+  "mongodb://localhost/kestone-store-fronts-tutorial";
+
+const sessionConfig = {
   maxAge: 60 * 60 * 24 * 360,
   secret: process.env.COOKIE_SECRET,
-}
+};
 
-export default config({
-  server: {
-    cors: {
-      origin: [process.env.FRONTEND_URL],
-      credentials:true,
-    }
+const { withAuth } = createAuth({
+  listKey: "User",
+  identityField: "email",
+  secretField: "password",
+  initFirstItem: {
+    fields: ["name", "email", "password"],
+    // todo: add roles
   },
+});
 
-  db: {
-    adapter: 'mongoose',
-    url: databaseURL,
-    // add data seeding here
-  },
-  lists: createSchema({
-    // Schema items go here
-  }),
-  ui: {
-    //change this for roles
-    isAccessAllowed: () => true,
+export default withAuth(
+  config({
+    server: {
+      cors: {
+        origin: [process.env.FRONTEND_URL],
+        credentials: true,
+      },
     },
-    // Add session values here
-})
+
+    db: {
+      adapter: "mongoose",
+      url: databaseURL,
+      // add data seeding here
+    },
+    lists: createSchema({
+      // Schema items go here
+      User,
+    }),
+    ui: {
+      isAccessAllowed: ({ session }) => {
+        console.log('keystone.ts line 48',session);
+        return !!session?.data
+      },
+    },
+    session: withItemData(statelessSessions(sessionConfig), {
+      User: 'id'
+    })
+  })
+);
