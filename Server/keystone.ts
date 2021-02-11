@@ -5,6 +5,8 @@ import { createAuth } from "@keystone-next/auth";
 import { withItemData, statelessSessions } from '@keystone-next/keystone/session'
 
 import { User } from "./schemas/User";
+import { Product } from "./schemas/Products";
+import { ProductImage } from './schemas/ProductImage'
 
 const databaseURL =
   process.env.DATABASE_URL ||
@@ -42,10 +44,12 @@ export default withAuth(
     lists: createSchema({
       // Schema items go here
       User,
+      Product,
+      ProductImage,
     }),
     ui: {
       isAccessAllowed: ({ session }) => {
-        console.log('keystone.ts line 48',session);
+        //console.log('keystone.ts line 48',session);
         return !!session?.data
       },
     },
