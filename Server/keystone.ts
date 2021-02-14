@@ -12,7 +12,7 @@ import { insertSeedData } from './seed-data';
 
 const databaseURL =
   process.env.DATABASE_URL ||
-  "mongodb://localhost/kestone-store-fronts-tutorial";
+  "mongodb://localhost/keystone-store-fronts-tutorial";
 
 const sessionConfig = {
   maxAge: 60 * 60 * 24 * 360,
@@ -25,7 +25,7 @@ const { withAuth } = createAuth({
   secretField: "password",
   initFirstItem: {
     fields: ["name", "email", "password"],
-    // todo: add roles
+    // todo: add permission roles
   },
 });
 
