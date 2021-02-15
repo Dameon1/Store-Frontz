@@ -1,3 +1,4 @@
-export default function IndexPage() {
-  return <p>Something</p>
-}
+// OR "export { default } from './products.js'"
+import ProductsPage from './products';
+
+export default ProductsPage;
