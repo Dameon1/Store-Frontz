@@ -44,11 +44,11 @@ export default function Header() {
                   Store Frontz
                 </Link>
               </Logo>
+              <Nav />
             </div>
             <div className="sub-bar">
               <h2>Search</h2>
             </div>
-            <Nav />
           </HeaderStyles>
   )
 }
