@@ -1,5 +1,5 @@
 import gql from 'graphql-tag';
-import {useQuery} from "@apollo/client";
+import { useQuery } from "@apollo/client";
 import DisplayError from "./ErrorMessage";
 import Head from "next/head";
 import styled from 'styled-components';
@@ -18,15 +18,9 @@ const ProductStyles = styled.div`
     height: 100%;
     object-fit: contain;
   }
-`
+`;
 
-
-
-
-
-
-
-const SINGLE_ITEM_QUERY = gql`
+export const SINGLE_ITEM_QUERY = gql`
   query SINGLE_ITEM_QUERY($id:ID!){
   Product(where: {
     id:$id
