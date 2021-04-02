@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Nav from "./Nav";
 
-import styled from 'styled-components';
+import styled from "styled-components";
 
 const Logo = styled.h1`
   font-size: 4rem;
@@ -35,20 +35,17 @@ const HeaderStyles = styled.header`
 `;
 
 export default function Header() {
-
   return (
-          <HeaderStyles>
-            <div className="bar">
-              <Logo>
-                <Link href="/">
-                  Store Frontz
-                </Link>
-              </Logo>
-              <Nav />
-            </div>
-            <div className="sub-bar">
-              <h2>Search</h2>
-            </div>
-          </HeaderStyles>
-  )
+    <HeaderStyles>
+      <div className="bar">
+        <Logo>
+          <Link href="/">Store Frontz</Link>
+        </Logo>
+        <Nav />
+      </div>
+      <div className="sub-bar">
+        <h2>Search</h2>
+      </div>
+    </HeaderStyles>
+  );
 }

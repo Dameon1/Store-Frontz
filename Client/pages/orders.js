@@ -1,6 +1,15 @@
-export default function OrdersPage() {
-  return <h1>
-           Hello Order World
-          </h1>
+import Products from '../components/Products';
+import Pagination from '../components/Pagination';
+
+
+
+export default function OrderPage() {
+  return (
+    <>
+      <Pagination page={1}/>
+      <Products />
+      <Pagination page={1}/>
+    </>
+  )
          
 }
